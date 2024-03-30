@@ -111,9 +111,12 @@ class _MovableBoxState extends State<MovableBox> {
                       if (!_showTopBorder) {
                         color = Colors.transparent;
                       }
-                      return Container(
-                        color: color,
-                        height: barSize,
+                      return IgnorePointer(
+                        ignoring: !_showTopBorder,
+                          child: Container(
+                            color: color,
+                            height: barSize,
+                          ),
                       );
                     },
                   ),
@@ -148,9 +151,12 @@ class _MovableBoxState extends State<MovableBox> {
                       if (!_showBottomBorder) {
                         color = Colors.transparent;
                       }
-                      return Container(
-                        color: color,
-                        height: barSize,
+                      return IgnorePointer(
+                        ignoring: !_showBottomBorder,
+                        child: Container(
+                          color: color,
+                          height: barSize,
+                        ),
                       );
                     },
                   ),
@@ -185,9 +191,12 @@ class _MovableBoxState extends State<MovableBox> {
                       if (!_showLeftBorder) {
                         color = Colors.transparent;
                       }
-                      return Container(
-                        color: color,
-                        width: barSize,
+                      return IgnorePointer(
+                        ignoring: !_showLeftBorder,
+                        child: Container(
+                          color: color,
+                          width: barSize,
+                        ),
                       );
                     },
                   ),
@@ -222,9 +231,12 @@ class _MovableBoxState extends State<MovableBox> {
                       if (!_showRightBorder) {
                         color = Colors.transparent;
                       }
-                      return Container(
-                        color: color,
-                        width: barSize,
+                      return IgnorePointer(
+                        ignoring: !_showRightBorder,
+                        child: Container(
+                          color: color,
+                          width: barSize,
+                        ),
                       );
                     },
                   ),
