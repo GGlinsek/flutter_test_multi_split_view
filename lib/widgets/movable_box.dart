@@ -37,7 +37,7 @@ class _MovableBoxState extends State<MovableBox> {
   bool _showBottomBorder = false;
   bool _showLeftBorder = false;
   bool _showRightBorder = false;
-  static const barSize = 20.0;
+  static const barSize = 50.0;
 
   @override
   Widget build(BuildContext context) {
