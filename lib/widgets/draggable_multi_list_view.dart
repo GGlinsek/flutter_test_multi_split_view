@@ -355,7 +355,7 @@ class _DraggableMultiListViewState extends State<DraggableMultiListView> {
           ? Axis.vertical
           : Axis.horizontal,
       children:
-          (direction == MoveDirection.up || direction == MoveDirection.left)
+          (direction == MoveDirection.down || direction == MoveDirection.right)
               ? [targetBox, movedBox]
               : [movedBox, targetBox],
       onWeightChange: () {

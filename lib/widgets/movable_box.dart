@@ -37,12 +37,14 @@ class _MovableBoxState extends State<MovableBox> {
   bool _showBottomBorder = false;
   bool _showLeftBorder = false;
   bool _showRightBorder = false;
-  static const barSize = 20.0;
+  // static const barSize = 50.0;
 
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
+        double horizontalBarSize = constraints.maxHeight / 4;
+        double verticalBarSize = constraints.maxWidth / 4;
         return LongPressDraggable<MovableBox>(
           data: widget,
           feedback: Material(
@@ -111,9 +113,12 @@ class _MovableBoxState extends State<MovableBox> {
                       if (!_showTopBorder) {
                         color = Colors.transparent;
                       }
-                      return Container(
-                        color: color,
-                        height: barSize,
+                      return IgnorePointer(
+                        ignoring: !_showTopBorder,
+                        child: Container(
+                          color: color,
+                          height: horizontalBarSize,
+                        ),
                       );
                     },
                   ),
@@ -148,9 +153,12 @@ class _MovableBoxState extends State<MovableBox> {
                       if (!_showBottomBorder) {
                         color = Colors.transparent;
                       }
-                      return Container(
-                        color: color,
-                        height: barSize,
+                      return IgnorePointer(
+                        ignoring: !_showBottomBorder,
+                        child: Container(
+                          color: color,
+                          height: horizontalBarSize,
+                        ),
                       );
                     },
                   ),
@@ -185,9 +193,12 @@ class _MovableBoxState extends State<MovableBox> {
                       if (!_showLeftBorder) {
                         color = Colors.transparent;
                       }
-                      return Container(
-                        color: color,
-                        width: barSize,
+                      return IgnorePointer(
+                        ignoring: !_showLeftBorder,
+                        child: Container(
+                          color: color,
+                          width: verticalBarSize,
+                        ),
                       );
                     },
                   ),
@@ -222,9 +233,12 @@ class _MovableBoxState extends State<MovableBox> {
                       if (!_showRightBorder) {
                         color = Colors.transparent;
                       }
-                      return Container(
-                        color: color,
-                        width: barSize,
+                      return IgnorePointer(
+                        ignoring: !_showRightBorder,
+                        child: Container(
+                          color: color,
+                          width: verticalBarSize,
+                        ),
                       );
                     },
                   ),
