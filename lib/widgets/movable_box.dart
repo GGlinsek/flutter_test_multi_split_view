@@ -37,12 +37,14 @@ class _MovableBoxState extends State<MovableBox> {
   bool _showBottomBorder = false;
   bool _showLeftBorder = false;
   bool _showRightBorder = false;
-  static const barSize = 50.0;
+  // static const barSize = 50.0;
 
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
+        double horizontalBarSize = constraints.maxHeight / 4;
+        double verticalBarSize = constraints.maxWidth / 4;
         return LongPressDraggable<MovableBox>(
           data: widget,
           feedback: Material(
@@ -113,10 +115,10 @@ class _MovableBoxState extends State<MovableBox> {
                       }
                       return IgnorePointer(
                         ignoring: !_showTopBorder,
-                          child: Container(
-                            color: color,
-                            height: barSize,
-                          ),
+                        child: Container(
+                          color: color,
+                          height: horizontalBarSize,
+                        ),
                       );
                     },
                   ),
@@ -155,7 +157,7 @@ class _MovableBoxState extends State<MovableBox> {
                         ignoring: !_showBottomBorder,
                         child: Container(
                           color: color,
-                          height: barSize,
+                          height: horizontalBarSize,
                         ),
                       );
                     },
@@ -195,7 +197,7 @@ class _MovableBoxState extends State<MovableBox> {
                         ignoring: !_showLeftBorder,
                         child: Container(
                           color: color,
-                          width: barSize,
+                          width: verticalBarSize,
                         ),
                       );
                     },
@@ -235,7 +237,7 @@ class _MovableBoxState extends State<MovableBox> {
                         ignoring: !_showRightBorder,
                         child: Container(
                           color: color,
-                          width: barSize,
+                          width: verticalBarSize,
                         ),
                       );
                     },
