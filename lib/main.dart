@@ -86,11 +86,26 @@ class MultiSplitViewExampleState extends State<MultiSplitViewExample> {
   int _widgetCounter = 0;
 
   _onAddButtonClick() {
-    final controlWidget = Container(
-      color: Colors.blue,
-      child: Center(
-        child: Text('Control Widget $_widgetCounter'),
-      ),
+    final controlWidget = Column(
+      children: [
+        Row(
+          children: [
+            IconButton(
+                onPressed: () {
+                  debugPrint("Pressed");
+                },
+                icon: const Icon(Icons.delete))
+          ],
+        ),
+        Expanded(
+          child: Container(
+            color: Colors.blue,
+            child: Center(
+              child: Text('Control Widget $_widgetCounter'),
+            ),
+          ),
+        ),
+      ],
     );
     _widgetCounter++;
     _widgetInController.add(controlWidget);
