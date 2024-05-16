@@ -7,7 +7,7 @@ import 'package:test_multi_split_view/widgets/draggable_multi_list_view.dart';
 import 'movable_box.dart';
 
 class LayoutWidget extends StatefulWidget {
-  final StreamController<Widget>? addWidgetController;
+  final StreamController<Area>? addWidgetController;
   final Axis axis;
 
   const LayoutWidget({
@@ -21,19 +21,15 @@ class LayoutWidget extends StatefulWidget {
 }
 
 class _LayoutWidgetState extends State<LayoutWidget> with AutomaticKeepAliveClientMixin {
-  final widgets = <Widget>[];
-  final _widgetInController = StreamController<Widget>();
+  final _widgetInController = StreamController<Area>();
   final _widgetMovedOutController =
       StreamController<(MovableBox, MoveDirection)>();
 
   @override
   void initState() {
     if (widget.addWidgetController?.hasListener != null) {
-      widget.addWidgetController?.stream.listen((widget) {
-        setState(() {
-          widgets.add(widget);
-        });
-        _widgetInController.add(widget);
+      widget.addWidgetController?.stream.listen((area) {
+        _widgetInController.add(area);
       });
     }
     if (!_widgetMovedOutController.hasListener) {
@@ -57,7 +53,6 @@ class _LayoutWidgetState extends State<LayoutWidget> with AutomaticKeepAliveClie
         axis: widget.axis,
         onWidgetInController: _widgetInController,
         onWidgetMovedOutController: _widgetMovedOutController,
-        children: widgets,
       ),
     );
   }

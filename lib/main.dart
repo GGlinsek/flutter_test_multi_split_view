@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:multi_split_view/multi_split_view.dart';
 import 'package:test_multi_split_view/widgets/layout_widget.dart';
 
 void main() => runApp(const MultiSplitViewExampleApp());
@@ -48,7 +49,7 @@ class MultiSplitViewExample extends StatefulWidget {
 }
 
 class MultiSplitViewExampleState extends State<MultiSplitViewExample> {
-  final _widgetInController = StreamController<Widget>();
+  final _widgetInController = StreamController<Area>();
 
   @override
   initState() {
@@ -108,6 +109,6 @@ class MultiSplitViewExampleState extends State<MultiSplitViewExample> {
       ],
     );
     _widgetCounter++;
-    _widgetInController.add(controlWidget);
+    _widgetInController.add(Area(data:controlWidget));
   }
 }
